@@ -12,11 +12,15 @@
   <select name="var1">
     <option value="kelvin">Kelvin</option>
     <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+
   </select>
  to
  <select name="var2">
    <option value="kelvin">Kelvin</option>
    <option value="celsius">Celsius</option>
+   <option value="fahrenheit">Fahrenheit</option>
+
  </select>
   <br><br>
   <input type="submit">
@@ -31,35 +35,46 @@ if(isset($_POST['var1'])){
 $type1 = $_POST['var1'];
 $type2 = $_POST['var2'];
 
-$number = $_POST['num1']; // set varibles to inputs
+$value = $_POST['num1']; // set varibles to inputs
 
-if(!(is_numeric($number))){
+if(!(is_numeric($value))){
   echo"<center> Please enter a number </center>";
 }
 else{
-if ( $type1 == 'kelvin'){
-  if ($type2 == 'celsius'){
-  echo $number, " degrees Kelvin is ", $number -273.15, " degree Celsius";
+
+  if($type1 == "fahrenheit" && $type2 == "celsius"){
+     $conversion = ($value - 32) * 5/9;
+ }
+  else if($type1 == "fahrenheit" && $type2 == "kelvin"){
+     $conversion = ($value - 32) * 5/9 + 273.15;
+ }
+  else if($type1 == "celsius" && $type2 == "fahrenheit"){
+     $conversion = ($value * 9/5) + 32;
+ }
+  else if($type1 == "celsius" && $type2 == "kelvin"){
+     $conversion = $value + 273.15;
+ }
+  else if($type1 == "kelvin" && $type2 == "celsius"){
+     $conversion = $value - 273.15;
+ }
+  else if($type1 == "kelvin" && $type2 == "fahrenheit"){
+     $conversion = ($value - 273.15) * 9/5 + 32;
+ }
+ else if($type1 == "kelvin" && $type2 == "kelvin"){
+    $conversion = $value;
 }
-else{
-  echo $number, " degrees Kelvin is ", $number, " degree Kelvin";
+else if($type1 == "celsius" && $type2 == "celsius"){
+  $conversion = $value;
+}
+else if($type1 == "fahrenheit" && $type2 == "fahrenheit"){
+  $conversion = $value;
+}
+
+ echo $value, " degrees ", $type1, " is ", round($conversion), " degrees ", $type2;
 
 }
-}
-elseif( $type1 == "celsius" ) {
-  if($type2 == "kelvin"){
-  echo $number, " degrees Celsius is ", $number +273.15, " degree Kelvin";
-}
-else{
-  echo $number, " degrees Celsius is ", $number, " degree Celsius";
 
-}
-}
 
-else{
-
-}
-}
 
 echo '</center>';
 
