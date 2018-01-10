@@ -58,7 +58,7 @@ else if($type1 == "celsius" && $type2 == "celsius"){
 else if($type1 == "fahrenheit" && $type2 == "fahrenheit"){
   $conversion = $value;
 }
- echo $value, " degrees ", $type1, " is ", round($conversion), " degrees ", $type2;
+ echo $value, " degrees ", $type1, " is ", round($conversion, 2), " degrees ", $type2;
 }
 echo '</center>';
 }
