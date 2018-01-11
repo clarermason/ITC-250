@@ -1,0 +1,45 @@
+* { 
+margin: 0; 
+padding: 0; 
+}
+
+html {
+    width: 100%;
+    text-align: center;
+}
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    color: #000000;
+    font-size: 1.5em;  
+}
+
+h1 {
+    line-height: 3;
+}
+
+form {
+    padding-bottom: 30px;
+}
+
+select, input {
+    font-size: 1em;
+}
+
+.button {
+    font-size: 1em;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 30px;
+}
+
+.button:first-of-type {
+    display: block;
+}
+
+.button:last-of-type {
+    background-color: #008CBA;
+}
