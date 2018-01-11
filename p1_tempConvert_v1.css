@@ -26,6 +26,10 @@ select, input {
     font-size: 1em;
 }
 
+.submit {
+    display: block;
+}
+
 .button {
     font-size: 1em;
     background-color: #4CAF50;
@@ -34,10 +38,6 @@ select, input {
     color: white;
     padding: 10px 20px;
     margin-top: 30px;
-}
-
-.button:first-of-type {
-    display: block;
 }
 
 .button:last-of-type {

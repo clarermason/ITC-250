@@ -23,8 +23,10 @@
         <option value="kelvin">Kelvin</option>
     </select>    
     
-    <input type="submit" name="convertButton" class="button" />
-    <input type="reset" name="resetButton" class="button" />    
+    <div class="submit">
+        <input type="submit" name="convertButton" class="button" />
+        <input type="reset" name="resetButton" class="button" /> 
+    </div>    
    
     </form>
         
