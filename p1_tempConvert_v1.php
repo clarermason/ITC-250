@@ -1,12 +1,13 @@
 <html>
 <head>
     <title>Temperature Conversion</title>
+    <link rel="stylesheet" href="p1_tempConvert_v1.css" type="text/css" media="all" />
 </head>
 <body>
+    <h1>Temperature Converter</h1>
     <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-    <center>
 
-    <input type="text" name="value" size="7">
+    <input type="text" name="value">
         
     <select name="type">
         <option disabled>Measurement Type</option>
@@ -21,14 +22,14 @@
         <option value="fahrenheit">Fahrenheit</option>
         <option value="kelvin">Kelvin</option>
     </select>    
-        
-    <input type="submit" name="convertButton" />
-    <input type="reset" name="resetButton" />    
     
-    </center>    
+    <input type="submit" name="convertButton" class="button" />
+    <input type="reset" name="resetButton" class="button" />    
+   
     </form>
         
 <?php
+// conversion equations
 function tempConvert($value, $type, $newtype)
 {
    if($type == "fahrenheit" && $newtype == "celsius"){
@@ -52,11 +53,24 @@ function tempConvert($value, $type, $newtype)
    return $conversion;
 }
 
-$value = $_POST['value'];
-$type = $_POST['type'];
-$newtype = $_POST['newtype'];    
-$conversion = tempConvert($value, $type, $newtype);
-echo "<center>$value $type = $conversion $newtype</center>";
+// if value is entered, set variable
+if(isset($_POST['value'])){
+    $value = $_POST['value'];
+    // if value entered is a numberic value, set variables
+    if(is_numeric($value)){
+        $type = $_POST['type'];
+        $newtype = $_POST['newtype']; 
+        // if measurement types are different, proceed with calculations
+        if($type != $newtype){
+            $conversion = tempConvert($value, $type, $newtype);
+            echo "$value $type = $conversion $newtype";
+        }else{
+            echo "Please choose different measurement types";
+        }   
+    }else{
+        echo "Please enter a number";
+    } 
+}
 ?>
 
 </body>
